@@ -1,22 +1,24 @@
-import { invoke } from "@tauri-apps/api/core";
+document.addEventListener("DOMContentLoaded", () => {
+            const uploadBtn = document.getElementById("uploadBtn") as HTMLButtonElement;
+            const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+            const fileNameDisplay = document.getElementById("fileName") as HTMLParagraphElement;
 
-let greetInputEl: HTMLInputElement | null;
-let greetMsgEl: HTMLElement | null;
+            uploadBtn.addEventListener("click", () => {
+                fileInput.click(); // Abre o seletor de arquivos
+            });
 
-async function greet() {
-  if (greetMsgEl && greetInputEl) {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    greetMsgEl.textContent = await invoke("greet", {
-      name: greetInputEl.value,
-    });
-  }
-}
+            fileInput.addEventListener("change", (event) => {
+                        const target = event.target as HTMLInputElement;
+                        if (target.files && target.files.length > 0) {
+                            fileNameDisplay.textContent = `Arquivo selecionado: ${target.files[0].name}`;
+                        } else {
+                            fileNameDisplay.textContent = "Nenhum arquivo selecionado";
+                        }
 
-window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
-  document.querySelector("#greet-form")?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    greet();
-  });
-});
+                        window.location.href = `descricao.html?chaveAcesso=${dadosNF.chaveAcesso}&emitente=${dadosNF.emitente}&destinatario=${dadosNF.destinatario}&valorTotal=${dadosNF.valorTotal}&dataEmissao=${dadosNF.dataEmissao}&status=${dadosNF.status}`
+                    }
+                    else {
+                        fileNameDisplay.textContent = "Nenhum arquivo selecionado";
+                    }
+
+                    });

@@ -27,4 +27,13 @@ public class NotaFiscalController {
     public ResponseEntity<List<NotaFiscal>> listarNotas() {
         return ResponseEntity.ok(service.listarNotas());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<NotaFiscal> buscarNota(@PathVariable Long id) {
+        NotaFiscal nota = service.buscarNota(id);
+        if (nota != null) {
+            return ResponseEntity.ok(nota);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

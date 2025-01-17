@@ -21,5 +21,9 @@ public class NotaFiscalService {
 
     public List<NotaFiscal> listarNotas() {
         return repository.findAll();
+
+    }
+    public NotaFiscal buscarNota(Long id) {
+       return repository.findById(id).orElse(null);
     }
 }
