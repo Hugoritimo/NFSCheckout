@@ -1,23 +1,33 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+  "$schema": "https://schema.tauri.app/config/v2.json",
+  "project": {
+    "name": "frontend",
+    "version": "0.1.0",
+    "identifier": "com.frontend.app"
   },
-  "include": ["src"]
+  "build": {
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run dev"
+  },
+  "permissions": {
+    "filesystem": {
+      "scope": [
+        "."
+      ],
+      "read": true,
+      "write": true,
+      "remove": true
+    }
+  },
+  "windows": [
+    {
+      "title": "Frontend",
+      "width": 800,
+      "height": 600,
+      "resizable": true
+    }
+  ],
+  "security": {
+    "csp": null
+  }
 }
